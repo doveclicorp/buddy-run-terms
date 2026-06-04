@@ -15,7 +15,7 @@
 
   <article class="legal">
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective: 2026-05-04 · Last updated: 2026-05-04</p>
+    <p class="meta">Effective: 2026-05-04 · Last updated: 2026-06-04</p>
 
     <p>Arasaco ("we", "the company") respects your privacy. This policy explains what information BuddyRun ("the app") — the mobile application operated by the company — collects, how it is used, where it is stored, and how it is protected.</p>
 
@@ -25,8 +25,10 @@
     <ul>
       <li><strong>Lock session data</strong>: start/end time, duration, success/failure, virtual marathon distance, user-entered notes — <em>stored on-device only</em>. The virtual marathon distance is derived by multiplying elapsed lock time by a fixed speed; it is purely a visualization metric. The app does NOT use GPS, motion sensors, or any actual location data.</li>
       <li><strong>Lock schedules</strong>: recurring lock plans you create (name, weekdays, start/end time, enabled state) — <em>stored on-device only</em></li>
-      <li><strong>Installed app list</strong>: shown so you can pick "allowed apps". Never transmitted off-device</li>
+      <li><strong>Installed app information</strong>: app names and package names from Android launcher apps are shown so you can pick "allowed apps". Never transmitted off-device</li>
       <li><strong>App usage stats</strong>: read via Android Usage Stats API to detect blocked apps during a lock challenge. Never transmitted off-device</li>
+      <li><strong>Nickname</strong>: the in-app display name entered during onboarding — <em>stored on-device only</em></li>
+      <li><strong>Crash diagnostics</strong>: in release builds, if the app crashes, Firebase Crashlytics may receive crash logs, device/OS information, app version, crash time, and related diagnostic information.</li>
     </ul>
 
     <h3>1.2 NOT Collected</h3>
@@ -43,10 +45,11 @@
       <li>Provide the lock-challenge feature (start, maintain, end)</li>
       <li>Show your past lock history on the stats page</li>
       <li>Trigger scheduled locks at the configured time</li>
+      <li>Diagnose crashes and improve app stability</li>
     </ul>
 
     <h2>3. Storage Location and Retention</h2>
-    <p>All data is stored exclusively on the user's device. Nothing is transmitted to any external server.</p>
+    <p>Lock records, schedules, allowed apps, settings, and nickname are stored on the user's device. In release builds, crash diagnostic information may be transmitted to Firebase Crashlytics if the app terminates unexpectedly.</p>
     <table>
       <thead>
         <tr><th>Data</th><th>Storage Location (on-device)</th><th>Retention</th></tr>
@@ -55,22 +58,21 @@
         <tr><td>Lock session records (time, duration, success, virtual distance, notes)</td><td>SQLite database</td><td>Until you delete the app or clear data</td></tr>
         <tr><td>Lock schedules, allowed apps list</td><td>SQLite database</td><td>Until you delete the app or clear data</td></tr>
         <tr><td>Schedule alarm metadata + reboot-recovery state (whether a lock is currently active, snapshot of allowed packages)</td><td>Native SharedPreferences (app-private)</td><td>Cleaned up automatically when the schedule/lock ends or when the app is uninstalled</td></tr>
-        <tr><td>User settings (theme, language, character, hat, palette, onboarding-completed flag)</td><td>Flutter SharedPreferences (app-private)</td><td>Deleted with the app</td></tr>
+        <tr><td>User settings (nickname, theme, language, character, hat, palette, onboarding-completed flag)</td><td>Flutter SharedPreferences (app-private)</td><td>Deleted with the app</td></tr>
+        <tr><td>Crash diagnostics</td><td>Firebase Crashlytics</td><td>Handled under Firebase retention policies and used only for app stability analysis</td></tr>
       </tbody>
     </table>
     <p>Both the SQLite database file and the SharedPreferences directories are sandboxed by Android into the app-private storage area; no other app can read them (except on rooted devices).</p>
 
     <h2>4. Third-Party Sharing and Processors</h2>
-    <p>We do not sell, share, or hand off your personal data to any third party. The app does not contact any analytics SDK, advertising SDK, or external server; all data stays on your device.</p>
-    <p>If a third-party processor is introduced in a future update (e.g., crash analytics, advertising, cloud backup), this policy will be updated and announced in the app or on this page at least 30 days before the change takes effect.</p>
+    <p>We do not sell your personal data. We may use Google Firebase Crashlytics as a crash diagnostics processor to improve app stability. The app does not use any advertising SDK.</p>
+    <p>If a new third-party processor is introduced in a future update (e.g., cloud backup), this policy will be updated and announced in the app or on this page at least 30 days before the change takes effect.</p>
 
     <h2>5. Permissions Used</h2>
     <ul>
       <li><strong>Display over other apps (SYSTEM_ALERT_WINDOW)</strong>: Show the lock screen during a challenge</li>
       <li><strong>Usage access (PACKAGE_USAGE_STATS)</strong>: Detect blocked apps during a lock</li>
-      <li><strong>Query installed apps (QUERY_ALL_PACKAGES)</strong>: Show app list for allowed-apps selection</li>
-      <li><strong>Reorder tasks (REORDER_TASKS)</strong>: Bring the lock screen back to the foreground when a non-allowed app surfaces during a lock</li>
-      <li><strong>Exact alarms (SCHEDULE_EXACT_ALARM / USE_EXACT_ALARM)</strong>: Start scheduled locks precisely at the configured time</li>
+      <li><strong>Exact alarms (SCHEDULE_EXACT_ALARM)</strong>: Start scheduled locks precisely at the configured time</li>
       <li><strong>Foreground service (FOREGROUND_SERVICE_SPECIAL_USE)</strong>: Maintain the lock until the user-set end time</li>
       <li><strong>Notifications (POST_NOTIFICATIONS)</strong>: Show lock progress notifications</li>
       <li><strong>Boot completed (RECEIVE_BOOT_COMPLETED)</strong>: Restore scheduled locks after a reboot</li>
