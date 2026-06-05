@@ -15,58 +15,80 @@
 
   <article class="legal">
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective: 2026-05-04 · Last updated: 2026-06-04</p>
+    <p class="meta">Effective: 2026-05-04 · Last updated: 2026-06-05</p>
 
-    <p>Arasaco ("we", "the company") respects your privacy. This policy explains what information BuddyRun ("the app") — the mobile application operated by the company — collects, how it is used, where it is stored, and how it is protected.</p>
+    <p>Arasaco ("we", "the company") respects your privacy. This policy explains what information BuddyRun ("the app"), the mobile application operated by the company, collects, how it is used, where it is stored, and how it is protected.</p>
 
     <h2>1. Information We Collect</h2>
 
-    <h3>1.1 Automatically Collected</h3>
+    <h3>1.1 Information Stored on Your Device</h3>
     <ul>
-      <li><strong>Lock session data</strong>: start/end time, duration, success/failure, virtual marathon distance, user-entered notes — <em>stored on-device only</em>. The virtual marathon distance is derived by multiplying elapsed lock time by a fixed speed; it is purely a visualization metric. The app does NOT use GPS, motion sensors, or any actual location data.</li>
-      <li><strong>Lock schedules</strong>: recurring lock plans you create (name, weekdays, start/end time, enabled state) — <em>stored on-device only</em></li>
-      <li><strong>Installed app information</strong>: app names and package names from Android launcher apps are shown so you can pick "allowed apps". Never transmitted off-device</li>
-      <li><strong>App usage stats</strong>: read via Android Usage Stats API to detect blocked apps during a lock challenge. Never transmitted off-device</li>
-      <li><strong>Nickname</strong>: the in-app display name entered during onboarding — <em>stored on-device only</em></li>
+      <li><strong>Lock session data</strong>: lock start/end time, duration, full success/failure, virtual marathon distance, and user-entered notes. The virtual marathon distance is derived by multiplying elapsed lock time by a fixed speed and is only a visualization metric. The app does not use GPS, motion sensors, or actual location data.</li>
+      <li><strong>Lock schedules</strong>: recurring lock plans you create, including name, weekdays, start/end time, and enabled state.</li>
+      <li><strong>Allowed app settings</strong>: app names and package names from Android launcher apps are shown so you can choose apps allowed during a lock. This list is not included in account backup and is not transmitted off-device.</li>
+      <li><strong>App usage access</strong>: Android Usage Stats API is used to detect blocked apps during a lock. Raw app usage history is not transmitted off-device.</li>
+      <li><strong>App settings</strong>: nickname, theme, language, character, hat, shoes, palette, onboarding-completed state, and similar app preferences.</li>
+      <li><strong>Buddy Mile and reward data</strong>: BM balance, earning/spending history, owned hats, equipped items, and similar in-app reward records.</li>
+    </ul>
+
+    <h3>1.2 Information Processed When You Sign In or Back Up Data</h3>
+    <ul>
+      <li><strong>Google sign-in information</strong>: if you choose to sign in with Google, Supabase Auth processes account information required to keep you signed in, such as your Google account identifier and email address.</li>
+      <li><strong>Account backup data</strong>: if you sign in from the beginning, app usage data may be saved automatically to Supabase. If you first use the app without signing in and later sign in, local data from that device is backed up to Supabase only after you agree to "Back up this device's data".</li>
+      <li><strong>Backup consent record</strong>: when you back up local data to your account, Supabase may store the consent time and a summary of the backed-up local snapshot.</li>
+    </ul>
+
+    <h3>1.3 Crash and Diagnostic Information</h3>
+    <ul>
       <li><strong>Crash diagnostics</strong>: in release builds, if the app crashes, Firebase Crashlytics may receive crash logs, device/OS information, app version, crash time, and related diagnostic information.</li>
     </ul>
 
-    <h3>1.2 NOT Collected</h3>
+    <h3>1.4 Information We Do Not Collect</h3>
     <ul>
-      <li>Personally identifiable info (name, email, phone)</li>
-      <li>Location (GPS, IP geolocation)</li>
-      <li>Contacts, call logs, messages</li>
-      <li>Microphone, camera, photos</li>
-      <li>Financial information</li>
+      <li>Legal name, phone number, address, resident registration number, or other government identifiers</li>
+      <li>GPS location or IP-based location tracking information</li>
+      <li>Contacts, call logs, or messages</li>
+      <li>Microphone, camera, or photo files</li>
+      <li>Financial or payment information</li>
+      <li>Health diagnosis, treatment, medical, or similar sensitive health information</li>
     </ul>
 
     <h2>2. Purpose of Use</h2>
     <ul>
-      <li>Provide the lock-challenge feature (start, maintain, end)</li>
-      <li>Show your past lock history on the stats page</li>
+      <li>Provide the lock-challenge feature, including start, maintenance, and completion</li>
+      <li>Show past lock history and reward records on the stats page</li>
       <li>Trigger scheduled locks at the configured time</li>
+      <li>Maintain optional account sign-in through Google</li>
+      <li>Provide account backup and future restore support when you agree to sync local data</li>
       <li>Diagnose crashes and improve app stability</li>
     </ul>
 
     <h2>3. Storage Location and Retention</h2>
-    <p>Lock records, schedules, allowed apps, settings, and nickname are stored on the user's device. In release builds, crash diagnostic information may be transmitted to Firebase Crashlytics if the app terminates unexpectedly.</p>
+    <p>The app can be used without signing in. In that case, primary usage data is stored on your device. If you use Google sign-in or agree to back up local data, some data may be stored in Supabase. In release builds, crash diagnostic information may be transmitted to Firebase Crashlytics if the app terminates unexpectedly.</p>
     <table>
       <thead>
-        <tr><th>Data</th><th>Storage Location (on-device)</th><th>Retention</th></tr>
+        <tr><th>Data</th><th>Storage Location</th><th>Retention</th></tr>
       </thead>
       <tbody>
-        <tr><td>Lock session records (time, duration, success, virtual distance, notes)</td><td>SQLite database</td><td>Until you delete the app or clear data</td></tr>
-        <tr><td>Lock schedules, allowed apps list</td><td>SQLite database</td><td>Until you delete the app or clear data</td></tr>
-        <tr><td>Schedule alarm metadata + reboot-recovery state (whether a lock is currently active, snapshot of allowed packages)</td><td>Native SharedPreferences (app-private)</td><td>Cleaned up automatically when the schedule/lock ends or when the app is uninstalled</td></tr>
-        <tr><td>User settings (nickname, theme, language, character, hat, palette, onboarding-completed flag)</td><td>Flutter SharedPreferences (app-private)</td><td>Deleted with the app</td></tr>
+        <tr><td>Lock session records (time, duration, success, virtual distance, notes)</td><td>On-device SQLite database / Supabase if you sign in or agree to backup</td><td>Until you delete the app or clear data. Supabase data is retained until deletion is requested or the service purpose is fulfilled</td></tr>
+        <tr><td>Lock schedules and allowed app list</td><td>On-device SQLite database</td><td>Until you delete the app or clear data</td></tr>
+        <tr><td>App settings (nickname, theme, language, character, hat, shoes, palette, etc.)</td><td>On-device SharedPreferences / Supabase if you sign in or agree to backup</td><td>Until you delete the app or clear data. Supabase data is retained until deletion is requested or the service purpose is fulfilled</td></tr>
+        <tr><td>BM balance, earning/spending history, owned items</td><td>On-device SQLite database / Supabase if you sign in or agree to backup</td><td>Until you delete the app or clear data. Supabase data is retained until deletion is requested or the service purpose is fulfilled</td></tr>
+        <tr><td>Google sign-in account information</td><td>Supabase Auth</td><td>Until account deletion, disconnection, deletion request, or fulfillment of the service purpose</td></tr>
+        <tr><td>Backup consent record</td><td>Supabase</td><td>Retained as needed to manage consent records and respond to disputes</td></tr>
         <tr><td>Crash diagnostics</td><td>Firebase Crashlytics</td><td>Handled under Firebase retention policies and used only for app stability analysis</td></tr>
       </tbody>
     </table>
-    <p>Both the SQLite database file and the SharedPreferences directories are sandboxed by Android into the app-private storage area; no other app can read them (except on rooted devices).</p>
+    <p>Both the SQLite database file and SharedPreferences directories are sandboxed by Android into the app-private storage area; no other app can read them, except on rooted devices.</p>
 
     <h2>4. Third-Party Sharing and Processors</h2>
-    <p>We do not sell your personal data. We may use Google Firebase Crashlytics as a crash diagnostics processor to improve app stability. The app does not use any advertising SDK.</p>
-    <p>If a new third-party processor is introduced in a future update (e.g., cloud backup), this policy will be updated and announced in the app or on this page at least 30 days before the change takes effect.</p>
+    <p>We do not sell your personal data. We may use the following external services to provide the app and improve stability.</p>
+    <ul>
+      <li><strong>Supabase</strong>: optional Google sign-in, account authentication, user-approved app data backup, and sync processing</li>
+      <li><strong>Google OAuth</strong>: sign-in with the Google account you choose</li>
+      <li><strong>Google Firebase Crashlytics</strong>: crash logs and diagnostic processing</li>
+    </ul>
+    <p>The app does not use any advertising SDK and does not collect or share personal data for advertising purposes.</p>
 
     <h2>5. Permissions Used</h2>
     <ul>
@@ -76,17 +98,21 @@
       <li><strong>Foreground service (FOREGROUND_SERVICE_SPECIAL_USE)</strong>: Maintain the lock until the user-set end time</li>
       <li><strong>Notifications (POST_NOTIFICATIONS)</strong>: Show lock progress notifications</li>
       <li><strong>Boot completed (RECEIVE_BOOT_COMPLETED)</strong>: Restore scheduled locks after a reboot</li>
+      <li><strong>Internet (INTERNET)</strong>: Google sign-in, Supabase backup, and Crashlytics diagnostic transmission</li>
     </ul>
 
     <h2>6. Your Rights</h2>
     <p>You may at any time:</p>
     <ul>
-      <li>Delete all data in the app: uninstalling the app removes every lock record, note, and setting stored on the device. Because no external backup exists, deletion is irreversible.</li>
-      <li>Contact us with any privacy questions: see below</li>
+      <li>Delete on-device data by uninstalling the app or clearing app data</li>
+      <li>Sign out from the Settings screen</li>
+      <li>Use the app without Google sign-in if you do not want account backup</li>
+      <li>Request access, correction, or deletion of account data stored in Supabase</li>
+      <li>Contact us with any privacy questions using the email below</li>
     </ul>
 
     <h2>7. Children's Privacy</h2>
-    <p>This app is not directed at children under 14 and we do not knowingly collect data from children. Parents who become aware of such use should contact us at the email below for immediate deletion.</p>
+    <p>This app is not directed at children under 14, and we do not knowingly collect data from children. Parents who become aware of such use should contact us at the email below for immediate deletion.</p>
 
     <h2>8. Changes to This Policy</h2>
     <p>If we change this policy, we will notify users at least 7 days before the effective date via in-app notice or this page. Material changes will be announced 30 days in advance.</p>
