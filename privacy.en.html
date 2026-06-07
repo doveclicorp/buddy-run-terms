@@ -41,6 +41,7 @@
     <h3>1.3 Crash and Diagnostic Information</h3>
     <ul>
       <li><strong>Crash diagnostics</strong>: in release builds, if the app crashes, Firebase Crashlytics may receive crash logs, device/OS information, app version, crash time, and related diagnostic information.</li>
+      <li><strong>Advertising identifier and ad interaction data</strong>: when in-app ads are shown, Google AdMob may process the advertising identifier, ad impression/click information, device information, and network-related information to provide ads, manage frequency, and prevent abuse.</li>
     </ul>
 
     <h3>1.4 Information We Do Not Collect</h3>
@@ -61,6 +62,7 @@
       <li>Maintain optional account sign-in through Google</li>
       <li>Provide account backup and future restore support when you agree to sync local data</li>
       <li>Diagnose crashes and improve app stability</li>
+      <li>Show in-app ads, manage ad frequency, and prevent abuse</li>
     </ul>
 
     <h2>3. Storage Location and Retention</h2>
@@ -77,6 +79,7 @@
         <tr><td>Google sign-in account information</td><td>Supabase Auth</td><td>Until account deletion, disconnection, deletion request, or fulfillment of the service purpose</td></tr>
         <tr><td>Backup consent record</td><td>Supabase</td><td>Retained as needed to manage consent records and respond to disputes</td></tr>
         <tr><td>Crash diagnostics</td><td>Firebase Crashlytics</td><td>Handled under Firebase retention policies and used only for app stability analysis</td></tr>
+        <tr><td>Advertising identifier and ad interaction data</td><td>Google AdMob</td><td>Handled under Google's advertising service retention policies</td></tr>
       </tbody>
     </table>
     <p>Both the SQLite database file and SharedPreferences directories are sandboxed by Android into the app-private storage area; no other app can read them, except on rooted devices.</p>
@@ -87,8 +90,9 @@
       <li><strong>Supabase</strong>: optional Google sign-in, account authentication, user-approved app data backup, and sync processing</li>
       <li><strong>Google OAuth</strong>: sign-in with the Google account you choose</li>
       <li><strong>Google Firebase Crashlytics</strong>: crash logs and diagnostic processing</li>
+      <li><strong>Google AdMob</strong>: in-app ad display, ad measurement, frequency capping, and abuse prevention</li>
     </ul>
-    <p>The app does not use any advertising SDK and does not collect or share personal data for advertising purposes.</p>
+    <p>The app may use Google AdMob to show ads. We do not sell your personal data, and ad-related data processing is governed by Google AdMob policies and settings.</p>
 
     <h2>5. Permissions Used</h2>
     <ul>
@@ -99,6 +103,7 @@
       <li><strong>Notifications (POST_NOTIFICATIONS)</strong>: Show lock progress notifications</li>
       <li><strong>Boot completed (RECEIVE_BOOT_COMPLETED)</strong>: Restore scheduled locks after a reboot</li>
       <li><strong>Internet (INTERNET)</strong>: Google sign-in, Supabase backup, and Crashlytics diagnostic transmission</li>
+      <li><strong>Advertising ID (AD_ID)</strong>: Google AdMob ad display, ad measurement, frequency capping, and abuse prevention</li>
     </ul>
 
     <h2>6. Your Rights</h2>
