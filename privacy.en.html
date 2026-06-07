@@ -15,7 +15,7 @@
 
   <article class="legal">
     <h1>Privacy Policy</h1>
-    <p class="meta">Effective: 2026-05-04 · Last updated: 2026-06-05</p>
+    <p class="meta">Effective: 2026-05-04 · Last updated: 2026-06-07</p>
 
     <p>Arasaco ("we", "the company") respects your privacy. This policy explains what information BuddyRun ("the app"), the mobile application operated by the company, collects, how it is used, where it is stored, and how it is protected.</p>
 
@@ -33,18 +33,25 @@
 
     <h3>1.2 Information Processed When You Sign In or Back Up Data</h3>
     <ul>
-      <li><strong>Google sign-in information</strong>: if you choose to sign in with Google, Supabase Auth processes account information required to keep you signed in, such as your Google account identifier and email address.</li>
+      <li><strong>Google sign-in information</strong>: if you choose to sign in with Google, Supabase Auth processes account information required to keep you signed in, such as your Google account identifier, email address, and authentication session.</li>
       <li><strong>Account backup data</strong>: if you sign in from the beginning, app usage data may be saved automatically to Supabase. If you first use the app without signing in and later sign in, local data from that device is backed up to Supabase only after you agree to "Back up this device's data".</li>
       <li><strong>Backup consent record</strong>: when you back up local data to your account, Supabase may store the consent time and a summary of the backed-up local snapshot.</li>
     </ul>
 
-    <h3>1.3 Crash and Diagnostic Information</h3>
+    <h3>1.3 Payment and Subscription Information</h3>
+    <ul>
+      <li><strong>Google Play subscription verification data</strong>: when you subscribe to BuddyRun Plus or request subscription restoration, Supabase may store product ID, purchase token, subscription status, auto-renewal state, entitlement expiry time, and purchase-verification responses returned by Google Play.</li>
+      <li><strong>Subscription benefits and reward records</strong>: Plus activation state, ad-free entitlement, allowed-app limit extension, AI insight entitlement, one-time 3000 BM grant state, and BM/item/entitlement grants issued by an admin or promotion may be stored.</li>
+      <li><strong>Payment method information</strong>: we do not collect or store card numbers, bank account numbers, payment passwords, or similar payment method details. They are processed by Google Play.</li>
+    </ul>
+
+    <h3>1.4 Crash and Diagnostic Information</h3>
     <ul>
       <li><strong>Crash diagnostics</strong>: in release builds, if the app crashes, Firebase Crashlytics may receive crash logs, device/OS information, app version, crash time, and related diagnostic information.</li>
       <li><strong>Advertising identifier and ad interaction data</strong>: when in-app ads are shown, Google AdMob may process the advertising identifier, ad impression/click information, device information, and network-related information to provide ads, manage frequency, and prevent abuse.</li>
     </ul>
 
-    <h3>1.4 Information We Do Not Collect</h3>
+    <h3>1.5 Information We Do Not Collect</h3>
     <ul>
       <li>Legal name, phone number, address, resident registration number, or other government identifiers</li>
       <li>GPS location or IP-based location tracking information</li>
@@ -61,6 +68,9 @@
       <li>Trigger scheduled locks at the configured time</li>
       <li>Maintain optional account sign-in through Google</li>
       <li>Provide account backup and future restore support when you agree to sync local data</li>
+      <li>Verify Google Play subscription purchases, provide Plus benefits, check subscription status, and restore subscriptions</li>
+      <li>Process account-deletion requests, delete account data, and request cancellation of active subscription renewals</li>
+      <li>Respond to refund requests, payment disputes, fraudulent payments, or abuse prevention needs</li>
       <li>Diagnose crashes and improve app stability</li>
       <li>Show in-app ads, manage ad frequency, and prevent abuse</li>
     </ul>
@@ -78,6 +88,8 @@
         <tr><td>BM balance, earning/spending history, owned items</td><td>On-device SQLite database / Supabase if you sign in or agree to backup</td><td>Until you delete the app or clear data. Supabase data is retained until deletion is requested or the service purpose is fulfilled</td></tr>
         <tr><td>Google sign-in account information</td><td>Supabase Auth</td><td>Until account deletion, disconnection, deletion request, or fulfillment of the service purpose</td></tr>
         <tr><td>Backup consent record</td><td>Supabase</td><td>Retained as needed to manage consent records and respond to disputes</td></tr>
+        <tr><td>Google Play subscription verification data and Plus benefit records</td><td>Supabase / Google Play Developer API</td><td>Retained as needed to provide subscription benefits, respond to payment disputes, and prevent abuse. Deleted upon account deletion, except for minimum records that must be retained under applicable law</td></tr>
+        <tr><td>Account-deletion processing record</td><td>Supabase admin audit log</td><td>Retained in minimum scope as needed to confirm deletion processing, respond to disputes, and perform security audits</td></tr>
         <tr><td>Crash diagnostics</td><td>Firebase Crashlytics</td><td>Handled under Firebase retention policies and used only for app stability analysis</td></tr>
         <tr><td>Advertising identifier and ad interaction data</td><td>Google AdMob</td><td>Handled under Google's advertising service retention policies</td></tr>
       </tbody>
@@ -89,6 +101,7 @@
     <ul>
       <li><strong>Supabase</strong>: optional Google sign-in, account authentication, user-approved app data backup, and sync processing</li>
       <li><strong>Google OAuth</strong>: sign-in with the Google account you choose</li>
+      <li><strong>Google Play Billing and Google Play Developer API</strong>: in-app subscription payments, purchase verification, subscription-state checks, subscription restoration, and cancellation of active subscription renewals during account deletion</li>
       <li><strong>Google Firebase Crashlytics</strong>: crash logs and diagnostic processing</li>
       <li><strong>Google AdMob</strong>: in-app ad display, ad measurement, frequency capping, and abuse prevention</li>
     </ul>
@@ -102,7 +115,7 @@
       <li><strong>Foreground service (FOREGROUND_SERVICE_SPECIAL_USE)</strong>: Maintain the lock until the user-set end time</li>
       <li><strong>Notifications (POST_NOTIFICATIONS)</strong>: Show lock progress notifications</li>
       <li><strong>Boot completed (RECEIVE_BOOT_COMPLETED)</strong>: Restore scheduled locks after a reboot</li>
-      <li><strong>Internet (INTERNET)</strong>: Google sign-in, Supabase backup, and Crashlytics diagnostic transmission</li>
+      <li><strong>Internet (INTERNET)</strong>: Google sign-in, Supabase backup, Google Play subscription verification, and Crashlytics diagnostic transmission</li>
       <li><strong>Advertising ID (AD_ID)</strong>: Google AdMob ad display, ad measurement, frequency capping, and abuse prevention</li>
     </ul>
 
@@ -111,10 +124,13 @@
     <ul>
       <li>Delete on-device data by uninstalling the app or clearing app data</li>
       <li>Sign out from the Settings screen</li>
+      <li>Request deletion of your account and Supabase-backed-up data from the account deletion feature in Settings</li>
+      <li>Request account deletion or personal-data deletion outside the app by emailing us at the address below</li>
       <li>Use the app without Google sign-in if you do not want account backup</li>
       <li>Request access, correction, or deletion of account data stored in Supabase</li>
       <li>Contact us with any privacy questions using the email below</li>
     </ul>
+    <p>When account deletion is completed, account-based data stored in Supabase, including nickname, BM, owned items, lock sessions, notes, stats, and subscription-benefit records, is deleted, and the app also clears on-device data. If an active Google Play subscription is found, we attempt to stop its automatic renewal. Account deletion does not automatically issue a refund. Refunds are handled separately through Google Play's refund process or our customer-support review. Payment, dispute, or security-audit records required by applicable law may be retained for the required period with personal identifiers minimized.</p>
 
     <h2>7. Children's Privacy</h2>
     <p>This app is not directed at children under 14, and we do not knowingly collect data from children. Parents who become aware of such use should contact us at the email below for immediate deletion.</p>
@@ -127,7 +143,7 @@
       <li>Business name: Arasaco</li>
       <li>Representative: Kim Sangwoo</li>
       <li>Business registration number: 505-52-01124 (Republic of Korea)</li>
-      <li>Email: <a href="mailto:hardyjumpit@gmail.com">hardyjumpit@gmail.com</a></li>
+      <li>Email: <a href="mailto:doveclicorp@gmail.com">doveclicorp@gmail.com</a></li>
     </ul>
   </article>
 
