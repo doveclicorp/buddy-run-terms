@@ -40,8 +40,8 @@
 
     <h3>1.3 Payment and Subscription Information</h3>
     <ul>
-      <li><strong>Google Play subscription verification data</strong>: when you subscribe to BuddyRun Plus or request subscription restoration, Supabase may store product ID, purchase token, subscription status, auto-renewal state, entitlement expiry time, and purchase-verification responses returned by Google Play.</li>
-      <li><strong>Subscription benefits and reward records</strong>: Plus activation state, ad-free entitlement, allowed-app limit extension, AI insight entitlement, one-time 3000 BM grant state, and BM/item/entitlement grants issued by an admin or promotion may be stored.</li>
+      <li><strong>Google Play subscription verification data</strong>: when you subscribe to Buddy Plus or request subscription restoration, Supabase may store product ID, purchase token, subscription status, auto-renewal state, entitlement expiry time, and purchase-verification responses returned by Google Play.</li>
+      <li><strong>Subscription benefits and reward records</strong>: Buddy Plus activation state, ad-free entitlement, allowed-app limit extension, AI insight entitlement, one-time 3000 BM grant state, and BM/item/entitlement grants issued by an admin or promotion may be stored.</li>
       <li><strong>Payment method information</strong>: we do not collect or store card numbers, bank account numbers, payment passwords, or similar payment method details. They are processed by Google Play.</li>
     </ul>
 
@@ -68,7 +68,7 @@
       <li>Trigger scheduled locks at the configured time</li>
       <li>Maintain optional account sign-in through Google</li>
       <li>Provide account backup and future restore support when you agree to sync local data</li>
-      <li>Verify Google Play subscription purchases, provide Plus benefits, check subscription status, and restore subscriptions</li>
+      <li>Verify Google Play subscription purchases, provide Buddy Plus benefits, check subscription status, and restore subscriptions</li>
       <li>Process account-deletion requests, delete account data, and request cancellation of active subscription renewals</li>
       <li>Respond to refund requests, payment disputes, fraudulent payments, or abuse prevention needs</li>
       <li>Diagnose crashes and improve app stability</li>
@@ -88,7 +88,7 @@
         <tr><td>BM balance, earning/spending history, owned items</td><td>On-device SQLite database / Supabase if you sign in or agree to backup</td><td>Until you delete the app or clear data. Supabase data is retained until deletion is requested or the service purpose is fulfilled</td></tr>
         <tr><td>Google sign-in account information</td><td>Supabase Auth</td><td>Until account deletion, disconnection, deletion request, or fulfillment of the service purpose</td></tr>
         <tr><td>Backup consent record</td><td>Supabase</td><td>Retained as needed to manage consent records and respond to disputes</td></tr>
-        <tr><td>Google Play subscription verification data and Plus benefit records</td><td>Supabase / Google Play Developer API</td><td>Retained as needed to provide subscription benefits, respond to payment disputes, and prevent abuse. Deleted upon account deletion, except for minimum records that must be retained under applicable law</td></tr>
+        <tr><td>Google Play subscription verification data and Buddy Plus benefit records</td><td>Supabase / Google Play Developer API</td><td>Retained as needed to provide subscription benefits, respond to payment disputes, and prevent abuse. Deleted upon account deletion, except for minimum records that must be retained under applicable law</td></tr>
         <tr><td>Account-deletion processing record</td><td>Supabase admin audit log</td><td>Retained in minimum scope as needed to confirm deletion processing, respond to disputes, and perform security audits</td></tr>
         <tr><td>Crash diagnostics</td><td>Firebase Crashlytics</td><td>Handled under Firebase retention policies and used only for app stability analysis</td></tr>
         <tr><td>Advertising identifier and ad interaction data</td><td>Google AdMob</td><td>Handled under Google's advertising service retention policies</td></tr>
