@@ -15,7 +15,7 @@
 
   <article class="legal">
     <h1>Terms of Service</h1>
-    <p class="meta">Effective: 2026-05-04 · Last updated: 2026-06-09</p>
+    <p class="meta">Effective: 2026-05-04 · Last updated: 2026-06-11</p>
 
     <h2>1. Purpose</h2>
     <p>These Terms govern the relationship between Arasaco ("the Company", "we") and users of BuddyRun (the "Service"), the mobile application operated by the Company, and define the rights, obligations, and responsibilities of each party.</p>
@@ -34,15 +34,18 @@
       <li>Google sign-in is optional. If you do not sign in, your data is generally stored only on your device.</li>
       <li>If you use the Service while signed in or agree to back up local data, app data such as nickname, BM, owned items, lock history, notes, and stats may be backed up to your account.</li>
       <li>You may sign out or request account deletion from Settings. Signing out only disconnects the account session; account deletion starts the account and backed-up-data deletion process.</li>
+      <li>When switching accounts, the Service displays data based on the currently signed-in account. Nicknames and subscription status may differ by account.</li>
     </ol>
 
     <h2>4. Paid Subscriptions and Benefits</h2>
     <ol>
       <li>We may offer monthly or yearly Buddy Plus subscriptions through Google Play Billing.</li>
-      <li>Buddy Plus benefits may include ad removal, expanded allowed-app limits, AI insights and recommendations, one-time 3000 BM grant, and other benefits shown in the app.</li>
+      <li>Buddy Plus benefits may include ad removal, expanded allowed-app limits, AI insights and recommendations, unlimited buddy changes, a one-time 3000 BM grant, and other benefits shown in the app.</li>
       <li>Specific benefits, delivery methods, and availability may change based on app updates and operating policy.</li>
       <li>Subscription payment, billing, taxes, and payment methods are handled under Google Play policies and the payment method selected by the user.</li>
-      <li>To provide subscription benefits reliably, your Google sign-in account may be linked with subscription-verification data.</li>
+      <li>To provide subscription benefits reliably, your Google sign-in account may be linked with subscription-verification data such as purchase token, product ID, subscription status, and entitlement expiry time.</li>
+      <li>The app may first apply subscription entitlement stored in Supabase and then verify the status in the background through the Google Play Developer API when needed.</li>
+      <li>Subscription confirmation may take time immediately after purchase depending on Google Play or network status. You may use Restore Subscription to request another status check.</li>
     </ol>
 
     <h2>5. AI Features</h2>
@@ -50,16 +53,15 @@
       <li>If you separately consent, the Service may provide AI stats summaries, weekly digital detox feedback, activity recommendations for the next lock, and memo-based personalized suggestions.</li>
       <li>AI features generate supportive recommendations using app usage data such as lock records, stats, notes, lock duration, and virtual distance.</li>
       <li>AI outputs are supportive information for focus and digital detox. They are not medical, mental-health, legal, financial, or other professional advice.</li>
-      <li>You should not rely on AI outputs as the sole basis for important decisions and should seek professional advice when needed.</li>
       <li>AI model, feature scope, generation quality, and available usage may change or be limited depending on operations, cost, and external API availability.</li>
     </ol>
 
-    <h2>6. Subscription Cancellation and Refunds</h2>
+    <h2>6. Subscription Cancellation, Restoration, and Refunds</h2>
     <ol>
       <li>You may cancel automatic renewal at any time through Google Play's subscription management screen.</li>
-      <li>If an active Google Play subscription is found during account deletion, we attempt to stop automatic renewal for that subscription. Cancellation may be delayed or fail depending on Google Play account status, purchase-token state, or external system errors.</li>
+      <li>The in-app Manage Subscription button may link to Google Play's subscription management screen.</li>
+      <li>Restore Subscription checks purchase information stored by Google Play and our server to reapply Buddy Plus entitlement to the current account.</li>
       <li>Subscription cancellation or account deletion does not automatically issue a refund. Refunds are handled separately through Google Play's refund process or our customer-support review.</li>
-      <li>Refund decisions may consider purchase timing, usage period, duplicate charges, technical errors, applicable law, and Google Play policies.</li>
       <li>If a refund is approved, related subscription benefits, rewards, or unused entitlements may be revoked or terminated.</li>
     </ol>
 
@@ -81,7 +83,7 @@
     <h2>9. Limitation of Liability</h2>
     <ol>
       <li>We are not liable for any direct or indirect damages arising from missed calls, messages, or notifications during the use of the Service.</li>
-      <li>We are not liable for service interruptions or errors caused by force majeure, system failures, OS (Android) policy changes, or other causes beyond our reasonable control.</li>
+      <li>We are not liable for service interruptions or errors caused by force majeure, system failures, Android policy changes, Google Play or external API failures, or other causes beyond our reasonable control.</li>
       <li>The Service is provided "AS-IS" without warranty of fitness for any particular purpose.</li>
     </ol>
 
